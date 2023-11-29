@@ -1,13 +1,13 @@
 import React from "react";
 
-function Navbar_Item({ content, url }) {
+function Navbar_Item({ content, url, active }) {
   return (
     <>
       <a
         href={url}
-        className="bg-emerald-700 hover:bg-lime-500 text-stone-50
-        font-bold font-sans text-base text-center uppercase tracking-wider
-        py-1 px-2 w-full drop-shadow-md"
+        className= {`hover:bg-teal-600 text-stone-300 hover:text-stone-50 transition-all
+        font-extrabold font-serif text-lg text-center uppercase tracking-wider
+        w-full py-2 ${active}`}
       >
         {content}
       </a>

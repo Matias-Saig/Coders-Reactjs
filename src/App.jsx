@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
+import ItemListContainer from "./components/ItemList/ItemListContainer";
 
 function App() {
   return (
     <>
-    <Header/>
-      <Navbar />
+      <Header />
+      <ItemListContainer/>
     </>
   );
 }
