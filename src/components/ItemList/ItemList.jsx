@@ -13,11 +13,12 @@ function ItemList({ listArray }) {
             src={elem.url}
             alt={elem.title}
           />
-          <div className="flex flex-col  justify-between gap-1 w-11/12 mt-2">
+          <div className="flex flex-col justify-between gap-1 w-11/12 mt-2">
             <h4 className="font-bold text-xl text-neutral-800">{elem.title}</h4>
             <p className="text-neutral-700">{elem.content}</p>
             <p className="text-stone-700 text-right font-bold mt-4">${elem.price}</p>
           </div>
+          <button className="w-full bg-sky-500 text-stone-50 uppercase" onClick={''}>Comprar</button>
         </li>
       ))}
     </>

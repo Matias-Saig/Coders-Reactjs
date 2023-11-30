@@ -8,7 +8,7 @@ function App() {
     <>
       <Header />
 
-      <section className="container bg-green-50 py-5  h-screen flex flex-col items-center">
+      <section className="container bg-green-50 py-5 flex flex-col items-center">
       <Greeting
         greeting="Hola!!!"
         content="estos son nuestro productos destacados"
