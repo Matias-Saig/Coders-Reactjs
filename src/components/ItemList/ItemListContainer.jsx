@@ -7,16 +7,16 @@ function ItemListContainer() {
     <div className="container bg-green-50 ">
       <Greeting
         greeting="Hola!!!"
-        content= "estos son nuestro productos destacados"
+        content="estos son nuestro productos destacados"
         url="src/components/ItemList/greeting_Image.png"
         alt="Greeting"
       />
 
-      <h3 className="text-4xl italic font-bold text-emerald-950">
-        Nuestros productos destacados
-      </h3>
       <ul>
-        <ItemList />
+        <ItemList url="" alt="" title="" content="" price="" />
+        <ItemList url="" alt="" title="" content="" price="" />
+        <ItemList url="" alt="" title="" content="" price="" />
+        <ItemList url="" alt="" title="" content="" price="" />
       </ul>
     </div>
   );
