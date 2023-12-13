@@ -1,6 +1,4 @@
-import React from "react";
 import Navbar from "../Navbar/Navbar.jsx";
-import CartWidget from "../Widgets/CartWidget.jsx";
 
 function Header() {
   return (

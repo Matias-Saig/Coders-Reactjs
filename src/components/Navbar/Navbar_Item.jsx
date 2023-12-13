@@ -1,6 +1,7 @@
-import React from "react";
-
+/* eslint-disable react/prop-types */
 function Navbar_Item({ content, url, active }) {
+
+  
   return (
     <>
       <a
@@ -11,6 +12,8 @@ function Navbar_Item({ content, url, active }) {
       >
         {content}
       </a>
+
+      
     </>
   );
 }
