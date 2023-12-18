@@ -1,16 +1,27 @@
 import Navbar_Item from "./Navbar_Item";
 import CartWidget from "../Widgets/CartWidget";
-import { useState } from "react";
+
+const links = [
+  {
+    content: "Inicio",
+    href: "/",
+  },
+  {
+    content: "Categorias",
+    href: "/category",
+  },
+  {
+    content: "Contacto",
+    href: "/contacto",
+  },
+];
 
 function Navbar() {
-  const [a, b] = useState(true);
-  
   return (
     <nav className="flex bg-emerald-700 shadow-lg shadow-slate-300">
-      <Navbar_Item content={"Inicio"} url={"#"} active={"bg-emerald-800"} />
-      <Navbar_Item content={"Productos"} url={"#"} />
-      <Navbar_Item content={"Preguntas frecuentes"} url={"#"} />
-      <Navbar_Item content={"Contacto"} url={"#"} />
+      {links.map((link) => (
+        <Navbar_Item key={link.href} content={link.content} href={link.href} />
+      ))}
 
       <CartWidget />
     </nav>
