@@ -12,7 +12,7 @@ function ItemListContainer() {
 
   useEffect(() => {
     setLoading(true);
-    loader() // <= Promise
+    loader()
       .then((data) => {
         const list = categoryId
           ? data.filter((prod) => prod.category === categoryId)
