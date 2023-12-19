@@ -1,30 +1,32 @@
+import { Link } from "react-router-dom";
+
 function ItemList({ items }) {
   return (
     <>
       {items.map((elem) => (
         <li
-          className=" bg-white drop-shadow-md
+          className=" bg-white shadow-sm shadow-stone-300
         flex flex-col items-center justify-beetween
-        w-full"
+        w-1/4 py-3 rounded-lg"
           key={elem.id}
         >
           <img
-            className="object-cover h-56 w-full"
+            className="object-cover h-56 w-11/12"
             src={elem.img}
             alt={elem.title}
           />
-          <div className="flex flex-col justify-around gap-1 w-11/12 mt-2">
-            <h4 className="font-bold text-xl text-neutral-800">{elem.title}</h4>
-            <p className="text-neutral-700">{elem.description}</p>
-            <p className="text-stone-700 text-right font-bold mt-4">
-              ${elem.price}
-            </p>
-          </div>
+
+          <h4 className="w-11/12 font-bold h-16 my-2 text-2xl text-center text-neutral-800">
+            {elem.title}
+          </h4>
+
           <button
-            className="mt-5 w-full bg-sky-500 text-stone-50 uppercase"
-            onClick={""}
+            className="w-1/2 mb-3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50
+            uppercase font-extrabold text-lg "
           >
-            Comprar
+                    <Link to={`/item/${elem.id}`}>Detalles</Link>
+
+            
           </button>
         </li>
       ))}

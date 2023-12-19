@@ -7,8 +7,16 @@ const links = [
     href: "/",
   },
   {
-    content: "Categorias",
-    href: "/category",
+    content: "aromatica",
+    href: "/category/aromaticas",
+  },
+  {
+    content: "decorativa",
+    href: "/category/decorativas",
+  },
+  {
+    content: "frutal",
+    href: "/category/frutales",
   },
   {
     content: "Contacto",

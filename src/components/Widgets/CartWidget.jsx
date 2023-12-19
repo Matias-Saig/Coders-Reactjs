@@ -1,5 +1,3 @@
-import React from "react";
-
 function CartWidget() {
   return (
     <>
@@ -10,8 +8,8 @@ function CartWidget() {
         flex justify-center items-center gap-x-3"
       >
         <img
-          className="w-5"
-          src="src/components/Widgets/CartWidget.svg"
+          className="w-1/3"
+          src="../../../public/img/Widgets/CartWidget.svg"
           alt="Shopping Bag"
         ></img>
 
