@@ -4,7 +4,7 @@ function loader() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(productsList);
-    }, 1500);
+    }, 2000);
   });
 }
 

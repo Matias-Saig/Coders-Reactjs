@@ -5,9 +5,9 @@ function Loading() {
         <img
           src="../../../public/img/Loading/loading.png"
           alt="loading"
-          className="h-14"
+          className="animate-bounce h-14"
         />
-        <p className="font-bold text-4xl text-stone-400 font-serif italic">
+        <p className="animate-pulse font-bold text-4xl text-stone-400 font-serif italic">
           Cargando lista...
         </p>
       </div>

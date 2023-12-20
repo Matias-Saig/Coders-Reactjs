@@ -10,28 +10,27 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <section className="w-full pb-5 bg-green-50  m-0 flex flex-col items-center">
-        <Header />
+        <section className="w-full pb-5 bg-green-50  m-0 flex flex-col items-center">
+          <Header />
 
-       
           <Greeting
             greeting="Hola!!!"
-            content="estos son nuestro productos"
+            contentIndex="estos son nuestro productos"
             url="../public/img/Greeting/greeting_Image.png"
             alt="Greeting"
           />
 
-          {/*     <ItemListContainer /> */}
-        
-
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:categoryId" element={<ItemListContainer />} />
-          <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/not-found" element={<RouteNotFound />} />
-          <Route path="*" element={<Navigate to={"/not-found"} />} />
-        </Routes>
+          <Routes>
+            <Route exact path="/" element={<ItemListContainer />} />
+            <Route
+              path="/category/:categoryId"
+              element={<ItemListContainer />}
+            />
+            <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/not-found" element={<RouteNotFound />} />
+            <Route path="*" element={<Navigate to={"/not-found"} />} />
+          </Routes>
         </section>
       </BrowserRouter>
     </>

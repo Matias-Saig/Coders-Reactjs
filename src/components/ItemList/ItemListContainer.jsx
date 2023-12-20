@@ -24,9 +24,21 @@ function ItemListContainer() {
   }, [categoryId]);
 
   return (
-    <ul className="flex flex-wrap w-full gap-10 place-content-center">
-      {loading ? <Loading /> : <ItemList items={productsList} />}
-    </ul>
+    <>
+
+    
+    
+      <h2 className="text-4xl uppercase w-full text-center text-stone-400 mb-3 tracking-wide">
+        {categoryId}
+      </h2>
+      {loading ? (
+        <Loading />
+      ) : (
+        <ul className="flex flex-wrap w-full gap-10 place-content-center">
+          <ItemList items={productsList} />
+        </ul>
+      )}
+    </>
   );
 }
 

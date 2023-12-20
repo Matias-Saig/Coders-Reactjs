@@ -9,7 +9,6 @@ function ItemDetailContainer() {
   const [item, setItem] = useState(null);
 
   const { itemId } = useParams();
-
   useEffect(() => {
     loader()
       .then((data) => {
@@ -17,8 +16,6 @@ function ItemDetailContainer() {
       })
       .finally(() => setLoading(false));
   }, []);
-
-  console.log(item);
 
   return <>{loading ? <Loading /> : <ItemDetail item={item} />}</>;
 }
