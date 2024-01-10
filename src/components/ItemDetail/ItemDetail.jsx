@@ -1,3 +1,5 @@
+import ItemQuantifySelector from "./ItemQuantifySelector";
+
 function ItemDetail({ item }) {
   return (
     <div className="w-3/4 py-3 flex flex-col items-center gap-5">
@@ -14,19 +16,14 @@ function ItemDetail({ item }) {
       <p className="text-lg">{item.description}</p>
       </div>
 
-      <p className="text-3xl mt-5 pt-7 font-bold text-emerald-700 border-solid border-t-2 border-slate-200 w-full text-center">
+      <p className="text-3xl mt-5 mb-3 pt-7 font-bold text-emerald-700 border-solid border-t-2 border-slate-200 w-full text-center">
         Precio: ${item.price}
       </p>
-      <p className="text-xl mt-3 font-bold text-stone-500">
+<ItemQuantifySelector stock={item.stock} price={item.price}/>
+      <p className="text-xl font-bold text-stone-500">
         Disponibles: {item.stock} unidades
       </p>
-
-      <button
-        className="w-1/2 mb-3 rounded-full py-3 bg-emerald-600 hover:bg-emerald-900 text-stone-50
-            uppercase font-extrabold text-2xl"
-      >
-        comprar
-      </button>
+  
     </div>
   );
 }
