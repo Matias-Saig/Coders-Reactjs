@@ -6,31 +6,26 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
 function ItemDetailContainer() {
-  const [loading, setLoading] = useState(true)
-  const [ctrl, setCtrl] = useState()
-  const [item, setItem] = useState(null)
-
+  const [loading, setLoading] = useState(true);
+  const [ctrl, setCtrl] = useState(false);
+  const [item, setItem] = useState(null);
 
   const { itemId } = useParams();
 
-
   useEffect(() => {
     setLoading(true);
-    
+
     // Control de id de documentos en firebase
     const ctrlRef = collection(db, "productsList");
-  
-    getDocs(ctrlRef)
-      .then((querySnapshot) => {
-        const docsId = querySnapshot.docs.map((doc) => ({ id: doc.id }));
-        const docsFind = docsId.find( (e) => e.id === itemId)
-        console.log(docsFind)
-        !docsFind ? setCtrl(docsFind) : console.log(docsFind, "true");       
-      })
 
-      const docRef = doc(db, "productsList", itemId);
+    getDocs(ctrlRef).then((queryCtrl) => {
+      const docsId = queryCtrl.docs.map((doc) => ({ id: doc.id }));
+      if(!(docsId.find((e) => e.id === itemId))) {setCtrl(true)}
+    });
 
     // Llamado de documento del producto
+    const docRef = doc(db, "productsList", itemId);
+
     getDoc(docRef)
       .then((docSnapshot) => {
         const doc = {
@@ -39,17 +34,11 @@ function ItemDetailContainer() {
         };
         setItem(doc);
       })
-     .finally(() => setLoading(false));
-
+      .finally(() => setLoading(false));
   }, [itemId]);
-  
-console.log("control", ctrl);
 
-  
 
-  return( <>
-  {loading ? <Loading /> : <ItemDetail item={item} />}
-    </>)
+  return <>{loading ? <Loading /> : <ItemDetail item={item} />}</>;
 }
 
 export default ItemDetailContainer;
