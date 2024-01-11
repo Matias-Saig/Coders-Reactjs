@@ -38,7 +38,14 @@ function ItemDetailContainer() {
   }, [itemId]);
 
 
-  return <>{loading ? <Loading /> : <ItemDetail item={item} />}</>;
+  return <>
+  
+  {
+  ctrl ? <p>esto no debe renderizar</p>
+  :   loading ? <Loading /> : <ItemDetail item={item} />
+
+  }
+  </>;
 }
 
 export default ItemDetailContainer;
