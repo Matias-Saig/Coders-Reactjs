@@ -1,9 +1,8 @@
-function Contacto(  ) {
-    return (
-        <>
-<img src="../../../public/img/Construction/construction.jpg" />
-
-        </>
+function Contacto() {
+  return (
+    <>
+      <img src="../../../public/img/Construction/construction.jpg" />
+    </>
   );
 }
 

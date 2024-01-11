@@ -24,9 +24,7 @@ function ItemList({ items }) {
             className="w-1/2 mb-3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50
             uppercase font-extrabold text-lg "
           >
-                    <Link to={`/item/${elem.id}`}>Detalles</Link>
-
-            
+            <Link to={`/item/${elem.id}`}>Detalles</Link>
           </button>
         </li>
       ))}

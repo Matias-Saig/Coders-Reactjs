@@ -22,7 +22,7 @@ function ItemListContainer() {
 
     getDocs(docsRef)
       .then((querySnapshot) => {
-          const docs = querySnapshot.docs.map((doc) => {
+        const docs = querySnapshot.docs.map((doc) => {
           return {
             ...doc.data(),
             id: doc.id,

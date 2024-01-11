@@ -1,16 +1,15 @@
 import useQuantity from "../../Hooks/useQuantity";
 
-function ItemQuantifySelector({ stock, price }) {
+function ItemQuantitySelector({ stock, price }) {
   const { total, quantity, handleAdd, handleSubtract } = useQuantity({
     stock,
     price,
   });
 
-  const styleActive = "text-sky-700 hover:text-sky-400"
-  const styleDisabled = "text-stone-400"
-  const styleDisabledAdd = quantity == stock ? styleDisabled : styleActive
-  const styleDisabledSubtract = quantity == 0 ? styleDisabled : styleActive
-  
+  const styleActive = "text-sky-700 hover:text-sky-400";
+  const styleDisabled = "text-stone-400";
+  const styleDisabledAdd = quantity == stock ? styleDisabled : styleActive;
+  const styleDisabledSubtract = quantity == 0 ? styleDisabled : styleActive;
 
   return (
     <>
@@ -33,7 +32,13 @@ function ItemQuantifySelector({ stock, price }) {
           ↑
         </button>
       </div>
-      <p className={`text-2xl ${quantity == 0 ? "text-stone-400" : "text-sky-700"}`}>Total: ${total}</p>
+      <p
+        className={`text-2xl ${
+          quantity == 0 ? "text-stone-400" : "text-sky-700"
+        }`}
+      >
+        Total: ${total}
+      </p>
 
       <button className="w-1/4 text-stone-50 py-2 mt-1 rounded-full bg-gradient-to-l from-emerald-400 to-emerald-600 hover:from-emerald-600 hover:to-emerald-900 font-extrabold hover:drop-shadow-[0_1px_3px_rgba(25,25,25,0.5)] text-2xl">
         Comprar
@@ -42,4 +47,4 @@ function ItemQuantifySelector({ stock, price }) {
   );
 }
 
-export default ItemQuantifySelector;
+export default ItemQuantitySelector;

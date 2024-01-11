@@ -1,8 +1,11 @@
-import ItemQuantifySelector from "./ItemQuantifySelector";
+import ItemQuantitySelector from "./ItemQuantitySelector";
 
 function ItemDetail({ item }) {
+
+  
   return (
     <div className="w-3/4 py-3 flex flex-col items-center gap-5">
+
       <h3 className="text-5xl text-center font-bold font-serif text-teal-800 my-4 py-1 w-full border-solid border-b-2 border-slate-200">
         {item.title}
       </h3>
@@ -19,7 +22,7 @@ function ItemDetail({ item }) {
       <p className="text-3xl mt-5 mb-3 pt-7 font-bold text-emerald-700 border-solid border-t-2 border-slate-200 w-full text-center">
         Precio: ${item.price}
       </p>
-      <ItemQuantifySelector stock={item.stock} price={item.price} />
+      <ItemQuantitySelector stock={item.stock} price={item.price} />
       <p className="text-xl font-bold text-stone-500">
         Disponibles: {item.stock} unidades
       </p>
