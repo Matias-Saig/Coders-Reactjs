@@ -20,12 +20,13 @@ function ItemList({ items }) {
             {elem.title}
           </h4>
 
-          <button
+          <Link
             className="w-1/2 mb-3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50
-            uppercase font-extrabold text-lg "
+            uppercase font-extrabold text-lg text-center "
+            to={`/item/${elem.id}`}
           >
-            <Link to={`/item/${elem.id}`}>Detalles</Link>
-          </button>
+            Detalles
+          </Link>
         </li>
       ))}
     </>

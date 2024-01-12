@@ -1,36 +1,33 @@
-import Navbar_Item from "./Navbar_Item";
+import NavbarItem from "./NavbarItem";
 import CartWidget from "../Widgets/CartWidget";
 
-const links = [
-  {
-    content: "Inicio",
-    href: "/",
-  },
-  {
-    content: "aromaticas",
-    href: "/category/aromaticas",
-  },
-  {
-    content: "decorativas",
-    href: "/category/decorativas",
-  },
-  {
-    content: "frutales",
-    href: "/category/frutales",
-  },
-  {
-    content: "Contacto",
-    href: "/contacto",
-  },
-];
+import NavbarCategoryMenu from "./NavbarCategoryMenu";
+import useFirebaseNavbarCategory from "../../Hooks/useFirebaseNavbarCategory";
 
 function Navbar() {
-  return (
-    <nav className="flex bg-emerald-700 shadow-lg shadow-slate-300">
-      {links.map((link) => (
-        <Navbar_Item key={link.href} content={link.content} href={link.href} />
-      ))}
+ 
+  const {categories} = useFirebaseNavbarCategory()
 
+  return (
+    <nav className="flex w-full bg-teal-900 shadow-lg shadow-slate-300 justify-center items-center sticky top-0">
+      <NavbarItem content="Inicio" href="/" w="w-1/5" />
+
+      <NavbarCategoryMenu>
+        {categories.map((e) => (
+          <NavbarItem
+            key={e.category}
+            content={e.category}
+            href={e.link}
+            w="w-full"
+          />
+        ))}
+      </NavbarCategoryMenu>
+      {/* 
+      {
+        
+        
+      
+       */}
       <CartWidget />
     </nav>
   );

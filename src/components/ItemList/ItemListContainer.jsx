@@ -1,38 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import ItemList from "./ItemList.jsx";
 import Loading from "../Loading/Loading.jsx";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../Firebase/config.js";
+import useFirebaseFilterProducts from "../../Hooks/useFirebaseFilterProducts.jsx";
 
 function ItemListContainer() {
-  const [productsList, setProductsList] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const { categoryId } = useParams();
-
-  useEffect(() => {
-    setLoading(true);
-
-    const productsListRef = collection(db, "productsList");
-
-    const docsRef = categoryId
-      ? query(productsListRef, where("category", "==", categoryId))
-      : productsListRef;
-
-    getDocs(docsRef)
-      .then((querySnapshot) => {
-        const docs = querySnapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            id: doc.id,
-          };
-        });
-
-        setProductsList(docs);
-      })
-      .finally(() => setLoading(false));
-  }, [categoryId]);
+  const { categoryId, loading, productsList } = useFirebaseFilterProducts();
 
   return (
     <>

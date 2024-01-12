@@ -3,10 +3,10 @@ import Header from "./components/Header/Header";
 import Greeting from "./components/Greeting/Greeting.jsx";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer.jsx";
-import RouteNotFound from "./components/Pages/RouteNotFound.jsx";
-import Contacto from "./components/Pages/Contacto.jsx";
 import CartView from "./components/CartView/CartView.jsx";
 import { CartProvider } from "../Ejemplos/context/CartContext.jsx";
+import RouteNotFound from "./components/NotFound/RouteNotFound.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
   return (
@@ -15,9 +15,10 @@ function App() {
         
         <BrowserRouter>
         
-          <section className="w-full pb-5 bg-green-50  m-0 flex flex-col items-center">
+          <section className="w-full min-h-screen pb-5 bg-green-50  m-0 flex flex-col items-center">
         
             <Header />
+            <Navbar />
 
             <Greeting
               greeting="Hola!!!"
@@ -34,7 +35,6 @@ function App() {
               />
               <Route path="/item/:itemId" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<CartView />} />
-              <Route path="/contacto" element={<Contacto />} />
               <Route path="/not-found" element={<RouteNotFound />} />
               <Route path="*" element={<Navigate to={"/not-found"} />} />
             </Routes>

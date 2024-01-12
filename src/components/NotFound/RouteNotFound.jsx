@@ -11,7 +11,7 @@ function RouteNotFound() {
       </Link>
       <img
         src="../../../public/img/Error/404.webp"
-        className=" opacity-90"
+        className="opacity-90"
         alt="error 404"
       />
     </>

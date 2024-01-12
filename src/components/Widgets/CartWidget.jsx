@@ -2,18 +2,19 @@ function CartWidget() {
   return (
     <>
       <button
-        className="bg-emerald-800 hover:bg-teal-900 text-stone-300 text-ms hover:text-xl transition-all
-        w-1/4      
-        rounded-full mx-2 my-1 
-        flex justify-center items-center gap-x-3"
+        className=" text-stone-300  hover:text-zinc-100 text-2xl 
+      bg-teal-700 hover:bg-sky-700
+        transition-all
+          w-1/12 rounded-2xl 
+        flex justify-center items-center gap-x-3 ml-[45%]"
       >
         <img
-          className="w-1/3"
+          className="h-6"
           src="../../../public/img/Widgets/CartWidget.svg"
           alt="Shopping Bag"
         ></img>
+        <p> 0 </p>
 
-        <span> 0 </span>
       </button>
     </>
   );
