@@ -19,7 +19,7 @@ function ItemList({ items }) {
           <h4 className="w-11/12 font-bold h-16 my-2 text-2xl text-center text-neutral-800">
             {elem.title}
           </h4>
-
+          
           <Link
             className="w-1/2 mb-3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50
             uppercase font-extrabold text-lg text-center "

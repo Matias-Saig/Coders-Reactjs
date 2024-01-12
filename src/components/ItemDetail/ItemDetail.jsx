@@ -1,14 +1,15 @@
 import ItemQuantitySelector from "./ItemQuantitySelector";
 
 function ItemDetail({ item }) {
-
-  
   return (
     <div className="w-3/4 py-3 flex flex-col items-center gap-5">
 
-      <h3 className="text-5xl text-center font-bold font-serif text-teal-800 my-4 py-1 w-full border-solid border-b-2 border-slate-200">
+      <h3 className="text-5xl text-center font-bold font-serif text-teal-800 py-1 w-full border-solid border-b-2 border-slate-200">
         {item.title}
       </h3>
+      <h4 className="text-right w-full uppercase text-xl text-zinc-400 font-serif italic tracking-wider            ">
+        {item.category}
+      </h4>
       <div className="flex gap-5 justify-center w-4/5 items-center">
         <img
           className="object-contain h-64 border-solid border-4 border-slate-300"
