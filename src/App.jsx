@@ -4,47 +4,39 @@ import Greeting from "./components/Greeting/Greeting.jsx";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer.jsx";
 import CartView from "./components/CartView/CartView.jsx";
-import { CartProvider } from "../Ejemplos/context/CartContext.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
 import RouteNotFound from "./components/NotFound/RouteNotFound.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
   return (
-    <>
+    <section className="w-full min-h-screen pb-5 bg-green-50  m-0 flex flex-col items-center">
       <CartProvider>
-        
         <BrowserRouter>
-        
-          <section className="w-full min-h-screen pb-5 bg-green-50  m-0 flex flex-col items-center">
-        
-            <Header />
-            <Navbar />
+          <Header />
+          <Navbar />
 
-            <Greeting
-              greeting="Hola!!!"
-              contentIndex="estos son nuestro productos"
-              url="../public/img/Greeting/greeting_Image.png"
-              alt="Greeting"
+          <Greeting
+            greeting="Hola!!!"
+            contentIndex="estos son nuestro productos"
+            url="../public/img/Greeting/greeting_Image.png"
+            alt="Greeting"
+          />
+
+          <Routes>
+            <Route exact path="/" element={<ItemListContainer />} />
+            <Route
+              path="/category/:categoryId"
+              element={<ItemListContainer />}
             />
-
-            <Routes>
-              <Route exact path="/" element={<ItemListContainer />} />
-              <Route
-                path="/category/:categoryId"
-                element={<ItemListContainer />}
-              />
-              <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-              <Route path="/cart" element={<CartView />} />
-              <Route path="/not-found" element={<RouteNotFound />} />
-              <Route path="*" element={<Navigate to={"/not-found"} />} />
-            </Routes>
-
-          </section>
-
+            <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<CartView />} />
+            <Route path="/not-found" element={<RouteNotFound />} />
+            <Route path="*" element={<Navigate to={"/not-found"} />} />
+          </Routes>
         </BrowserRouter>
-        
       </CartProvider>
-    </>
+    </section>
   );
 }
 

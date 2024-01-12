@@ -6,7 +6,8 @@
     "description": "Es una planta aromática que se puede cultivar en macetas, jardín y huerta. Es fácil de cuidar y puede utilizarse para una variedad de propósitos, como condimentar alimentos, preparar bebidas y aromatizar espacios.",
     "price": "900",
     "stock": "6",
-    "category": "aromaticas"
+    "category": "aromaticas",
+    "options":["maceta roja", "maceta verde", "maceta blanca"]
   },
   {
     "id": "2",
@@ -15,7 +16,8 @@
     "description": "Son flores anuales de colores brillantes que son fáciles de cultivar, una excelente opción para los jardineros principiantes y pueden utilizarse para una variedad de propósitos, como decorar el hogar, atraer polinizadores y repeler plagas.",
     "price": "1200",
     "stock": "7",
-    "category": "decorativas"
+    "category": "decorativas",
+    "options":["plantin","maceta de plástico (regalo del día)"]
   },
   {
     "id": "3",
@@ -24,7 +26,8 @@
     "description": "Tiene un aroma fuerte y dulce, es relativamente fácil de cuidar, y puede usarse en una variedad de platos de cocina.",
     "price": "1000",
     "stock": "2",
-    "category": "aromaticas"
+    "category": "aromaticas",
+    "options":["maceta de barro","maceta de plástico"]
   },
   {
     "id": "4",
@@ -33,16 +36,18 @@
     "description": "Son una variedad de tomate que se caracteriza por sus frutos pequeños y redondos, deliciosos y nutritivos. Sencilla de cuidar y pueden producir una gran cantidad de frutos.",
     "price": "2000",
     "stock": "15",
-    "category": "frutales"
+    "category": "frutales",
+    "options":["maceta de barro","maceta de plástico","maceta de metal"]
   },
   {
     "id": "5",
     "img": "../../public/img/Productos/frutillas.jpeg",
     "title": "Frutillas",
     "description": "Son una fruta deliciosa y nutritiva que se puede cultivar en macetas. Son una planta relativamente fácil de cuidar y pueden producir frutos durante varios años.",
-    "price": "1300",
+    "price": "1900",
     "stock": "8",
-    "category": "frutales"
+    "category": "frutales",
+    "options":["plantin de tela", "plantin de lona plástica"]
   },
   {
     "id": "6",
@@ -51,7 +56,8 @@
     "description": "El jazmín es una planta trepadora de hoja perenne que produce flores blancas fragantes. Es una planta popular para el cultivo en macetas, ya que es relativamente fácil de cuidar y puede cultivarse en interiores o exteriores.",
     "price": "2500",
     "stock": "12",
-    "category": "aromaticas"
+    "category": "aromaticas",
+    "options":["maceta marrón","maceta gris","maceta negra","maceta celeste"]
   },
   {
     "id": "7",
@@ -60,16 +66,18 @@
     "description": "También conocida como impatiens walleriana, es una planta anual que se caracteriza por sus flores coloridas y abundantes",
     "price": "1500",
     "stock": "16",
-    "category": "decorativas"
+    "category": "decorativas",
+    "options":["maceta de barro", "maceta de plástico"]
   },
   {
     "id": "8",
     "img": "../../public/img/Productos/Sansevieria-Nana.jpeg",
-    "title": "Lengua de suegra",
-    "description": "Sansevieria Nana, también conocida como «lengua de suegra», es una planta suculenta perenne que se caracteriza por sus hojas largas y estrechas. Es una excelente opción para el cultivo en macetas, ya que es relativamente fácil de cuidar y puede sobrevivir en condiciones adversas.",
+    "title": "Sansevieria Nana",
+    "description": "También conocida como «lengua de suegra», es una planta suculenta perenne que se caracteriza por sus hojas largas y estrechas. Es una excelente opción para el cultivo en macetas, ya que es relativamente fácil de cuidar y puede sobrevivir en condiciones adversas.",
     "price": "2600",
     "stock": "20",
-    "category": "decorativas"
+    "category": "decorativas",
+    "options":["plantin de tela", "plantin de lona plástica"]
   },
   {
     "id": "9",
@@ -78,7 +86,8 @@
     "description": "Son un género de cactus de la familia Cactaceae. Se caracterizan por sus tallos cilíndricos o esféricos, con espinas largas y puntiagudas. Son plantas muy resistentes y fáciles de cultivar, lo que los hace una excelente opción para los jardineros principiantes.",
     "price": "900",
     "stock": "21",
-    "category": "decorativas"
+    "category": "decorativas",
+    "options":["plantin", "maceta de plástico (regalo del día)"]
   },
   {
     "id": "10",
@@ -87,7 +96,8 @@
     "description": "Se caracterizan por sus tallos planos y ovalados, llamados cladodes. Son plantas muy resistentes y fáciles de cultivar, lo que los hace una excelente opción para los jardineros principiantes.",
     "price": "1100",
     "stock": "17",
-    "category": "decorativas"
+    "category": "decorativas",
+    "options":["maceta de plástico", "maceta de barro", "maceta de cerámica"]
   },
   {
     "id": "11",
@@ -96,6 +106,7 @@
     "description": "El naranjo, también conocido como Citrus sinensis, es un árbol frutales cítrico que se cultiva en todo el mundo. Se adapta a cualquier suelo y con buenos cuidados puede vivir por muchos años.",
     "price": "2800",
     "stock": "3",
-    "category": "frutales"
+    "category": "frutales",
+    "options":["maceta barro", "maceta de plástico"]
   }
 ]

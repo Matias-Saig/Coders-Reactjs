@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function useQuantity({ stock, price }) {
   const [quantity, setQuantity] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleAdd = () => {
     quantity < stock && setQuantity(quantity + 1);
@@ -13,10 +13,10 @@ function useQuantity({ stock, price }) {
   };
 
   useEffect(() => {
-    setTotal(quantity * price);
+    setTotalPrice(quantity * price);
   }, [quantity, price]);
 
-  return { total, quantity, handleAdd, handleSubtract };
+  return { totalPrice, quantity, handleAdd, handleSubtract };
 }
 
 export default useQuantity;

@@ -7,7 +7,7 @@ function ItemListContainer() {
 
   return (
     <>
-      <h2 className="text-4xl uppercase w-full text-center text-stone-400 mb-3 tracking-wide">
+      <h2 className="text-4xl uppercase w-full text-center text-stone-400 mb-3 mt-5 tracking-wide">
         {categoryId}
       </h2>
       {loading ? (
