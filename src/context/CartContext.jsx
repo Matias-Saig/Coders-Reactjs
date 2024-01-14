@@ -5,6 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  // Agregar
   const addToCart = (
     currentItem,
     currentItemId,
@@ -43,6 +44,7 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  // Calcular cantidad total
   const redux = (elem) => {
     return elem.reduce((acc, item) => acc + item.quantity, 0);
   };

@@ -22,12 +22,7 @@ function Navbar() {
           />
         ))}
       </NavbarCategoryMenu>
-      {/* 
-      {
-        
-        
-      
-       */}
+  
       <CartWidget />
     </nav>
   );

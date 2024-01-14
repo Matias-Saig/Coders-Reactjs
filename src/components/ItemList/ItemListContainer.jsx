@@ -8,7 +8,7 @@ function ItemListContainer() {
 
   return (
     <>
-    <NavigateGoBack classAdd="ml-10" />
+      <NavigateGoBack classAdd="ml-10" />
       <h2 className="text-4xl uppercase w-full text-center text-stone-400 mb-3 mt-5 tracking-wide">
         {categoryId}
       </h2>

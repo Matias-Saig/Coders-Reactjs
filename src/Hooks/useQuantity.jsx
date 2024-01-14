@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-function useQuantity({ stock, price }) {
+function useQuantity({ stock, price, quantityInCart }) {
   const [quantity, setQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleAdd = () => {
-    quantity < stock && setQuantity(quantity + 1);
+    (quantity < (stock - quantityInCart)) && setQuantity(quantity + 1);
   };
 
   const handleSubtract = () => {
