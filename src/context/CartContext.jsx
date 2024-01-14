@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
             return {
               ...cartItem,
               quantity: cartItem.quantity + currentItemQuantity,
-              option : currentItemOption
+              option: currentItemOption,
             };
           } else {
             return cartItem;
@@ -34,12 +34,9 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  // Filtrado de item actual en cart
+  // Busqueda y filtrado del item actual en cart
   const isInCart = (id) => {
-    
-    return cart.filter((item) => item.id === id)
-    
-    
+    return cart.filter((item) => item.id === id);
   };
 
   const clearCart = () => {

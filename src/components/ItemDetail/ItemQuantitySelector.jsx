@@ -43,8 +43,6 @@ function ItemQuantitySelector({ item }) {
   // control de stock
   const currentProductInCart = isInCart(item.id);
 
-  
-
   return (
     <>
       <p className="text-center text-xl text-stone-800">
@@ -120,9 +118,9 @@ function ItemQuantitySelector({ item }) {
 
       {currentProductInCart.length !== 0 && (
         <p className="text-2xl text-sky-700 text-center">
-          De este producto tienes{" "}
-          <span className="font-bold">{redux(currentProductInCart)}</span> en el
-          carrito
+          De este producto tienes
+          <span className="font-bold"> {redux(currentProductInCart)} </span>
+          en el carrito
           <ul className="flex gap-5">
             {currentProductInCart.map((e) => (
               <li
