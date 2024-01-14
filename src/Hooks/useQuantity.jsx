@@ -16,7 +16,7 @@ function useQuantity({ stock, price, quantityInCart }) {
     setTotalPrice(quantity * price);
   }, [quantity, price]);
 
-  return { totalPrice, quantity, handleAdd, handleSubtract };
+  return { totalPrice, quantity, setQuantity,handleAdd, handleSubtract };
 }
 
 export default useQuantity;

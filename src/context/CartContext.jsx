@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
       );
       if (isItemsFound) {
         return cart.map((cartItem) => {
-          if (cartItem.id === currentItemId) {
+          if (cartItem.id === currentItemId && cartItem.option === currentItemOption) {
             return {
               ...cartItem,
               quantity: cartItem.quantity + currentItemQuantity,
