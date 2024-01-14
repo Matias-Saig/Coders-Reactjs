@@ -1,9 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useQuantity from "../../Hooks/useQuantity";
 import { CartContext } from "../../context/CartContext";
 
 function ItemQuantitySelector({ item }) {
-  const { addToCart, isInCart } = useContext(CartContext);
+   const { cart, addToCart, isInCart } = useContext(CartContext);
+  
+
 
   const { totalPrice, quantity, handleAdd, handleSubtract } = useQuantity({
     stock: item.stock,
@@ -22,6 +24,21 @@ function ItemQuantitySelector({ item }) {
     setOption(event.target.value);
   };
 
+  const selectedProduct = {
+      id: item.id,
+      title: item.title,
+      img: item.img,
+      price: item.price,
+      option,
+      quantity,
+      totalPrice
+    }
+
+    useEffect( ()=>{
+      console.log(cart);
+    }, [cart] )
+
+
   /* const p4 = () => item.id == cart.map((e) => {e.id === item.id ? console.log(e.quantity) : console.log("dont");})
   p4()
  */
@@ -35,9 +52,9 @@ function ItemQuantitySelector({ item }) {
       <select
         value={option}
         onChange={handleChange}
-        className="uppercase p-5 text-center bg-green-100 border-2 border-emerald-100 text-stone-800"
+        className="uppercase  tracking-wide  font-extrabold p-5 text-center bg-green-100 border-2 border-emerald-100 text-stone-700"
       >
-        <option value="sin cambios" selected>
+        <option value="Disponible del local" selected>
           Disponible del local
         </option>
         {item.options.map((e) => (
@@ -77,19 +94,10 @@ function ItemQuantitySelector({ item }) {
       <button
         className={`
       w-1/4 text-stone-50 py-2 mt-1 rounded-full bg-gradient-to-l from-emerald-400 to-emerald-600 hover:from-emerald-600 hover:to-emerald-900 font-extrabold shadow-md text-2xl
-      ${quantity === 0 && "grayscale"} transition-all
+      ${quantity === 0 && "grayscale hover:from-emerald-400 hover:to-emerald-600"} transition-all
       `}
-        onClick={() => {
-          addToCart({
-            id: item.id,
-            title: item.title,
-            img: item.img,
-            price: item.price,
-            option,
-            quantity,
-            totalPrice,
-          });
-        }}
+        onClick={()=> addToCart(selectedProduct, selectedProduct.id, selectedProduct.quantity, selectedProduct.option)}
+        disabled={quantity == 0}
       >
         Comprar
       </button>
@@ -98,13 +106,13 @@ function ItemQuantitySelector({ item }) {
         Disponibles: {item.stock} unidades
       </p>
 
-      {isInCart(item.id) ? (
+      { isInCart(item.id) ? (
         <p className="text-5xl text-sky-500">
           Tienes x de este producto en el carrito
         </p>
       ) : (
         <p className="text-5xl text-amber-400">No esta en el carrito</p>
-      )}
+      ) }
     </>
   );
 }
