@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 function CartWidget() {
   const { cart, totalQuantity } = useContext(CartContext);
   const totalQuantityInCart = totalQuantity(cart);
   return (
     <>
-      <button
+      <Link to="/cart"
         className={` 
         
           transition-all
@@ -25,7 +26,7 @@ function CartWidget() {
           alt="Shopping Bag"
         ></img>
         <p className="mt-1"> {totalQuantityInCart} </p>
-      </button>
+      </Link>
     </>
   )
 }
