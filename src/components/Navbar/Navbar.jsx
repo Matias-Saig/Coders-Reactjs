@@ -6,13 +6,13 @@ import useFirebaseNavbarCategory from "../../Hooks/useFirebaseNavbarCategory";
 
 function Navbar() {
  
-  const {categories} = useFirebaseNavbarCategory()
+  const {categories, categoriesLoading} = useFirebaseNavbarCategory()
 
   return (
     <nav className="flex w-full bg-teal-900 shadow-lg shadow-slate-300 justify-center items-center sticky top-0">
       <NavbarItem content="Inicio" href="/" w="w-1/5" />
 
-      <NavbarCategoryMenu>
+      <NavbarCategoryMenu categoriesLoading={categoriesLoading}>
         {categories.map((e) => (
           <NavbarItem
             key={e.category}

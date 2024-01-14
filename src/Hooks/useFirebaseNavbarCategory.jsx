@@ -4,9 +4,10 @@ import { db } from "../Firebase/config";
 
 function useFirebaseNavbarCategory() {
    const [categories, setCategories] = useState([]);
+   const [categoriesLoading, setCategoriesLoading] = useState(false)
 
   useEffect(() => {
-    
+    setCategoriesLoading(true)
     const categoriesRef = collection(db, "categories");
 
     getDocs(categoriesRef)
@@ -19,10 +20,11 @@ function useFirebaseNavbarCategory() {
 
         setCategories(docs);
       })
+      .finally( () => setCategoriesLoading(false))
       
   }, []);
 
-  return {categories};
+  return {categories, categoriesLoading};
 }
 
 export default useFirebaseNavbarCategory;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NavbarCategoryMenu = ({ children }) => {
+const NavbarCategoryMenu = ({ children, categoriesLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -10,9 +10,9 @@ const NavbarCategoryMenu = ({ children }) => {
   return (
     <>
       <button
-        className="hover:bg-teal-600 text-stone-200 hover:text-stone-50 transition-all
-          font-extrabold font-serif text-xl uppercase tracking-wider 
-          w-1/5 flex items-center gap-x-2 justify-center"
+        className={`hover:bg-teal-600 text-stone-200 hover:text-stone-50 transition-all
+        font-extrabold font-serif text-xl uppercase tracking-wider 
+        w-1/5 flex items-center gap-x-2 justify-center ${categoriesLoading && "opacity-30"}`}
         onClick={toggleMenu}
       >
         <img
