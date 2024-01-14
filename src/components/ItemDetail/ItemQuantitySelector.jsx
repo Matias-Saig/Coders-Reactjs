@@ -3,10 +3,9 @@ import useQuantity from "../../Hooks/useQuantity";
 import { CartContext } from "../../context/CartContext";
 
 function ItemQuantitySelector({ item }) {
-   const { cart, addToCart, isInCart } = useContext(CartContext);
-  
+  const { cart, addToCart, isInCart, redux } = useContext(CartContext);
 
-
+  // operadores
   const { totalPrice, quantity, handleAdd, handleSubtract } = useQuantity({
     stock: item.stock,
     price: item.price,
@@ -24,24 +23,27 @@ function ItemQuantitySelector({ item }) {
     setOption(event.target.value);
   };
 
+  // armado de producto
   const selectedProduct = {
-      id: item.id,
-      title: item.title,
-      img: item.img,
-      price: item.price,
-      option,
-      quantity,
-      totalPrice
-    }
+    id: item.id,
+    title: item.title,
+    img: item.img,
+    price: item.price,
+    option,
+    quantity,
+    totalPrice,
+  };
 
-    useEffect( ()=>{
-      console.log(cart);
-    }, [cart] )
+  //!
+  useEffect(() => {
+    console.log("carrito", cart);
+  }, [cart]);
+  //!
 
+  // control de stock
+  const currentProductInCart = isInCart(item.id);
 
-  /* const p4 = () => item.id == cart.map((e) => {e.id === item.id ? console.log(e.quantity) : console.log("dont");})
-  p4()
- */
+  
 
   return (
     <>
@@ -94,9 +96,19 @@ function ItemQuantitySelector({ item }) {
       <button
         className={`
       w-1/4 text-stone-50 py-2 mt-1 rounded-full bg-gradient-to-l from-emerald-400 to-emerald-600 hover:from-emerald-600 hover:to-emerald-900 font-extrabold shadow-md text-2xl
-      ${quantity === 0 && "grayscale hover:from-emerald-400 hover:to-emerald-600"} transition-all
+      ${
+        quantity === 0 &&
+        "grayscale hover:from-emerald-400 hover:to-emerald-600"
+      } transition-all
       `}
-        onClick={()=> addToCart(selectedProduct, selectedProduct.id, selectedProduct.quantity, selectedProduct.option)}
+        onClick={() =>
+          addToCart(
+            selectedProduct,
+            selectedProduct.id,
+            selectedProduct.quantity,
+            selectedProduct.option
+          )
+        }
         disabled={quantity == 0}
       >
         Comprar
@@ -106,13 +118,23 @@ function ItemQuantitySelector({ item }) {
         Disponibles: {item.stock} unidades
       </p>
 
-      { isInCart(item.id) ? (
-        <p className="text-5xl text-sky-500">
-          Tienes x de este producto en el carrito
+      {currentProductInCart.length !== 0 && (
+        <p className="text-2xl text-sky-700 text-center">
+          De este producto tienes{" "}
+          <span className="font-bold">{redux(currentProductInCart)}</span> en el
+          carrito
+          <ul className="flex gap-5">
+            {currentProductInCart.map((e) => (
+              <li
+                key={e.option}
+                className="text-stone-400 text-xl lowercase italic"
+              >
+                {e.quantity} x &ldquo;{e.option}&rdquo;
+              </li>
+            ))}
+          </ul>
         </p>
-      ) : (
-        <p className="text-5xl text-amber-400">No esta en el carrito</p>
-      ) }
+      )}
     </>
   );
 }
