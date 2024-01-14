@@ -3,11 +3,11 @@ import useQuantity from "../../Hooks/useQuantity";
 import { CartContext } from "../../context/CartContext";
 
 function ItemQuantitySelector({ item }) {
-  const { addToCart, isInCart, redux } = useContext(CartContext);
+  const { addToCart, isInCart, totalQuantity } = useContext(CartContext);
 
   // control de stock
   const currentProductInCart = isInCart(item.id);
-  const quantityInCart = redux(currentProductInCart);
+  const quantityInCart = totalQuantity(currentProductInCart);
 
   // operadores
   const { totalPrice, quantity, setQuantity, handleAdd, handleSubtract } =

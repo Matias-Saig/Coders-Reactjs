@@ -5,7 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Agregar
+  // Agregar en función del id y el option
   const addToCart = (
     currentItem,
     currentItemId,
@@ -45,7 +45,7 @@ export const CartProvider = ({ children }) => {
   };
 
   // Calcular cantidad total
-  const redux = (elem) => {
+  const totalQuantity = (elem) => {
     return elem.reduce((acc, item) => acc + item.quantity, 0);
   };
 
@@ -66,7 +66,7 @@ export const CartProvider = ({ children }) => {
         clearCart,
         totalCart,
         removeItem,
-        redux,
+        totalQuantity,
       }}
     >
       {children}
