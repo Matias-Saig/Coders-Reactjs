@@ -117,7 +117,7 @@ function ItemQuantitySelector({ item }) {
       </button>
 
       <p className="text-xl font-bold text-stone-500">
-        Disponibles: {item.stock} unidades
+        Stock: {item.stock} unidades
       </p>
 
       {
@@ -133,7 +133,7 @@ function ItemQuantitySelector({ item }) {
             <ul className="flex gap-5">
               {currentProductInCart.map((e) => (
                 <li
-                  key={e.options}
+                  key={ 10 + Math.random()}
                   className="text-stone-400 text-xl lowercase italic"
                 >
                   {e.quantity} x &ldquo;{e.option}&rdquo;

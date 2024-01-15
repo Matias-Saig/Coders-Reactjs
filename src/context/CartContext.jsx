@@ -5,7 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Agregar en función del id y el option
+  // Agregar en función del id y el option, con control de duplicados
   const addToCart = (
     currentItem,
     currentItemId,
@@ -19,7 +19,10 @@ export const CartProvider = ({ children }) => {
       );
       if (isItemsFound) {
         return cart.map((cartItem) => {
-          if (cartItem.id === currentItemId && cartItem.option === currentItemOption) {
+          if (
+            cartItem.id === currentItemId &&
+            cartItem.option === currentItemOption
+          ) {
             return {
               ...cartItem,
               quantity: cartItem.quantity + currentItemQuantity,
@@ -33,6 +36,20 @@ export const CartProvider = ({ children }) => {
         return [...cart, currentItem];
       }
     });
+  };
+
+  const removeItem = (currentItemId, currentItemOption) => {
+    const itemFound = cart.find(
+      (cartItem) =>
+        (cartItem.id && cartItem.option) ===
+        (currentItemId && currentItemOption)
+    );
+    if (itemFound) {
+      
+      setCart(
+        cart.filter((item) => (item.id) !== (currentItemId && currentItemOption))
+      );
+    }
   };
 
   // Busqueda y filtrado del item actual en cart
@@ -49,12 +66,10 @@ export const CartProvider = ({ children }) => {
     return elem.reduce((acc, item) => acc + item.quantity, 0);
   };
 
+  const totalQuantityInCart = totalQuantity(cart);
+
   const totalCart = () => {
     return cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
-  };
-
-  const removeItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
   };
 
   return (
@@ -67,6 +82,7 @@ export const CartProvider = ({ children }) => {
         totalCart,
         removeItem,
         totalQuantity,
+        totalQuantityInCart,
       }}
     >
       {children}
