@@ -38,16 +38,16 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeItem = (currentItemId, currentItemOption) => {
+  const removeItem = (currentItem) => {
     const itemFound = cart.find(
       (cartItem) =>
         (cartItem.id && cartItem.option) ===
-        (currentItemId && currentItemOption)
+        (currentItem.id && currentItem.option)
     );
     if (itemFound) {
       
       setCart(
-        cart.filter((item) => (item.id) !== (currentItemId && currentItemOption))
+        cart.filter((item) => item !== currentItem)
       );
     }
   };

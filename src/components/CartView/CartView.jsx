@@ -37,7 +37,7 @@ function CartView() {
 
               <button
                 className="bg-stone-300 hover:bg-amber-700 text-zinc-50 w-3/4 px-1 h-8 rounded-lg mt-3 flex justify-center items-center justify-self-end gap-1"
-                onClick={()=> removeItem(item.id, item.option)}
+                onClick={()=> removeItem(item)}
               >
                 <img
                   className="w-[24px] opacity-80"
