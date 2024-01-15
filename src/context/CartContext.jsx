@@ -45,10 +45,7 @@ export const CartProvider = ({ children }) => {
         (currentItem.id && currentItem.option)
     );
     if (itemFound) {
-      
-      setCart(
-        cart.filter((item) => item !== currentItem)
-      );
+      setCart(cart.filter((item) => item !== currentItem));
     }
   };
 
