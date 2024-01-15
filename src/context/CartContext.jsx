@@ -19,10 +19,7 @@ export const CartProvider = ({ children }) => {
       );
       if (isItemsFound) {
         return cart.map((cartItem) => {
-          if (
-            cartItem.id === currentItemId &&
-            cartItem.option === currentItemOption
-          ) {
+          if (cartItem.id === currentItemId && cartItem.option === currentItemOption) {
             return {
               ...cartItem,
               quantity: cartItem.quantity + currentItemQuantity,
@@ -41,8 +38,7 @@ export const CartProvider = ({ children }) => {
   const removeItem = (currentItem) => {
     const itemFound = cart.find(
       (cartItem) =>
-        (cartItem.id && cartItem.option) ===
-        (currentItem.id && currentItem.option)
+        (cartItem.id && cartItem.option) === (currentItem.id && currentItem.option)
     );
     if (itemFound) {
       setCart(cart.filter((item) => item !== currentItem));
@@ -50,24 +46,18 @@ export const CartProvider = ({ children }) => {
   };
 
   // Busqueda y filtrado del item actual en cart
-  const isInCart = (id) => {
-    return cart.filter((item) => item.id === id);
-  };
+  const isInCart = (id) => cart.filter((item) => item.id === id)
 
   const clearCart = () => {
     setCart([]);
   };
 
   // Calcular cantidad total
-  const totalQuantity = (elem) => {
-    return elem.reduce((acc, item) => acc + item.quantity, 0);
-  };
+  const totalQuantity = (elem) => elem.reduce((acc, item) => acc + item.quantity, 0)
 
   const totalQuantityInCart = totalQuantity(cart);
 
-  const totalCart = () => {
-    return cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
-  };
+  const totalCartPrice = cart.reduce((acc, item) => acc + item.totalPrice, 0)
 
   return (
     <CartContext.Provider
@@ -76,8 +66,8 @@ export const CartProvider = ({ children }) => {
         isInCart,
         addToCart,
         clearCart,
-        totalCart,
         removeItem,
+        totalCartPrice,
         totalQuantity,
         totalQuantityInCart,
       }}

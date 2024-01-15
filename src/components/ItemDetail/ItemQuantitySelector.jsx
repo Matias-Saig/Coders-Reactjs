@@ -18,7 +18,8 @@ function ItemQuantitySelector({ item }) {
     });
 
   // cambios de estilo
-  const styleActive = "text-white bg-sky-700 rounded-full w-10 pt-1 hover:bg-sky-400";
+  const styleActive =
+    "text-white bg-sky-700 rounded-full w-10 pt-1 hover:bg-sky-400";
   const styleDisabled = "text-stone-400";
   const styleDisabledAdd =
     quantity == item.stock - quantityInCart ? styleDisabled : styleActive;
