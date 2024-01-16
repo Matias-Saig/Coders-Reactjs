@@ -11,7 +11,7 @@ function CartWidget() {
         
           transition-all
             w-1/12 rounded-2xl text-xl font-semibold
-          flex justify-center items-center gap-x-3 ml-[45%]
+          flex justify-center items-center gap-x-3 
           ${
             totalQuantityInCart > 0
               ? "bg-teal-600 text-zinc-100 hover:text-zinc-50 hover:bg-sky-500"

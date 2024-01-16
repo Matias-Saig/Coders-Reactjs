@@ -9,8 +9,9 @@ function Navbar() {
   const {categories, categoriesLoading} = useFirebaseNavbarCategory()
 
   return (
-    <nav className="z-50 flex w-full bg-teal-900 shadow-lg shadow-slate-300 justify-center items-center sticky top-0">
+    <nav className="z-50 flex items-center w-full bg-teal-900 shadow-lg shadow-slate-300 px-3  sticky top-0 gap-1">
       <NavbarItem content="Inicio" href="/" w="w-1/5" />
+
 
       <NavbarCategoryMenu categoriesLoading={categoriesLoading}>
         {categories.map((e) => (
@@ -22,8 +23,12 @@ function Navbar() {
           />
         ))}
       </NavbarCategoryMenu>
+
+      
   
+      <NavbarItem content="Mis Compras" href="/cart" w="w-1/5   ml-[40%]" />
       <CartWidget />
+
     </nav>
   );
 }

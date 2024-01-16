@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 
-function Navbar_Item({ content, href, w }) {
+function NavbarItem({ content, href, w }) {
   const local = useLocation().pathname;
 
   return (
@@ -19,4 +19,4 @@ function Navbar_Item({ content, href, w }) {
   );
 }
 
-export default Navbar_Item;
+export default NavbarItem;

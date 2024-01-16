@@ -10,16 +10,14 @@ function ItemQuantitySelector({ item }) {
   const quantityInCart = totalQuantity(currentProductInCart);
 
   // operadores
-  const { totalPrice, quantity, setQuantity, handleAdd, handleSubtract } =
-    useQuantity({
-      stock: item.stock,
-      price: item.price,
-      quantityInCart: quantityInCart,
-    });
+  const { totalPrice, quantity, setQuantity, handleAdd, handleSubtract } = useQuantity({
+    stock: item.stock,
+    price: item.price,
+    quantityInCart: quantityInCart,
+  });
 
   // cambios de estilo
-  const styleActive =
-    "text-white bg-sky-700 rounded-full w-10 pt-1 hover:bg-sky-400";
+  const styleActive = "text-white bg-sky-700 rounded-full w-10 pt-1 hover:bg-sky-400";
   const styleDisabled = "text-stone-400";
   const styleDisabledAdd =
     quantity == item.stock - quantityInCart ? styleDisabled : styleActive;
@@ -78,18 +76,11 @@ function ItemQuantitySelector({ item }) {
           {quantity}
         </span>
 
-        <button
-          className={`font-extrabold ${styleDisabledAdd}`}
-          onClick={handleAdd}
-        >
+        <button className={`font-extrabold ${styleDisabledAdd}`} onClick={handleAdd}>
           ↑
         </button>
       </div>
-      <p
-        className={`text-2xl ${
-          quantity == 0 ? "text-stone-400" : "text-sky-700"
-        }`}
-      >
+      <p className={`text-2xl ${quantity == 0 ? "text-stone-400" : "text-sky-700"}`}>
         Total: ${totalPrice}
       </p>
 
@@ -115,18 +106,20 @@ function ItemQuantitySelector({ item }) {
         }}
         disabled={quantity == 0}
       >
-        Comprar
+        Agregar
       </button>
 
       {
-        // CONDICIONAL EN FUNCIÓN DE CARRITO
+        // CONDICIONAL EN FUNCIÓN DE SELECCIONADOS Y STOCK
 
-        currentProductInCart.length !== 0 && (
+        currentProductInCart.length !== 0 ? (
           <div>
-            <p className="text-xl text-sky-700 text-center">
-              De este producto tienes
-              <span className="font-bold"> {quantityInCart} </span>
-              en el carrito
+            <p className="text-xl text-sky-800 text-center font-semibold">
+              {quantityInCart} productos en lista de compra 
+              <span className="ml-5 text-stone-500">
+              Stock: {item.stock} unidades
+              </span>
+              
             </p>
             <ul className="flex gap-5 justify-center">
               {currentProductInCart.map((e) => (
@@ -139,12 +132,12 @@ function ItemQuantitySelector({ item }) {
               ))}
             </ul>
           </div>
+        ) : (
+          <span className="text-xl font-bold text-stone-500">
+            Stock: {item.stock} unidades
+          </span>
         )
       }
-
-      <p className="text-xl font-bold text-stone-500">
-        Stock: {item.stock} unidades
-      </p>
     </>
   );
 }

@@ -24,7 +24,7 @@ const NavbarCategoryMenu = ({ children, categoriesLoading }) => {
 
       {isOpen && (
         <div
-          className="absolute top-12 w-3/5 bg-teal-700 shadow-md shadow-teal-700 rounded-xl
+          className="absolute top-12 left-[20%] w-3/5 bg-teal-700 shadow-md shadow-teal-700 rounded-xl
         flex justify-around px-2"
         >
           {children}
