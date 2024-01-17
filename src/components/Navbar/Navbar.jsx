@@ -25,8 +25,8 @@ function Navbar() {
       </NavbarCategoryMenu>
 
       
-  
-      <NavbarItem content="Mis Compras" href="/cart" w="w-1/5   ml-[40%]" />
+      <NavbarItem content="Mis Ordenes" href="/cart" w="w-1/5" />
+      <NavbarItem content="Mis Compras" href="/cart" w="w-1/5" />
       <CartWidget />
 
     </nav>

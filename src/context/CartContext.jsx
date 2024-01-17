@@ -59,6 +59,12 @@ export const CartProvider = ({ children }) => {
 
   const totalCartPrice = cart.reduce((acc, item) => acc + item.totalPrice, 0)
 
+  // Control de stock: reducción de option y quantity por Id
+  const reduxIdQuantity = cart.reduce((acc, item) => {
+    acc[item.id] = (acc[item.id] || 0) + item.quantity;
+    return acc;
+  }, {});
+
   return (
     <CartContext.Provider
       value={{
@@ -66,6 +72,7 @@ export const CartProvider = ({ children }) => {
         isInCart,
         addToCart,
         clearCart,
+        reduxIdQuantity,
         removeItem,
         totalCartPrice,
         totalQuantity,
