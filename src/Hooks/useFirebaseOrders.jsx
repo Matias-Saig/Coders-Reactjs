@@ -17,6 +17,8 @@ function useFirebaseOrders({orderId}) {
         const docsId = queryCtrl.docs.map((doc) => ({ id: doc.id }));
         if (!docsId.find((e) => e.id === orderId)) {
           setCtrl(true);
+        }  else {
+          setCtrl(false)
         }
       });
   
