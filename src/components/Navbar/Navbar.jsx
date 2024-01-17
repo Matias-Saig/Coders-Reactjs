@@ -1,34 +1,29 @@
 import NavbarItem from "./NavbarItem";
 import CartWidget from "../Widgets/CartWidget";
 
-import NavbarCategoryMenu from "./NavbarCategoryMenu";
+import NavbarMenuCategory from "./NavbarMenuCategory";
 import useFirebaseNavbarCategory from "../../Hooks/useFirebaseNavbarCategory";
 
 function Navbar() {
- 
-  const {categories, categoriesLoading} = useFirebaseNavbarCategory()
+  const { categories, categoriesLoading } = useFirebaseNavbarCategory();
 
   return (
-    <nav className="z-50 flex items-center w-full bg-teal-900 shadow-lg shadow-slate-300 px-3  sticky top-0 gap-1">
+    <nav className="z-50 flex justify-center items-center w-full bg-teal-900 shadow-lg shadow-slate-300 px-3 sticky top-0 gap-1">
       <NavbarItem content="Inicio" href="/" w="w-1/5" />
+      <NavbarItem content="Mis ordenes" href="/orders" w="w-1/5" />
 
-
-      <NavbarCategoryMenu categoriesLoading={categoriesLoading}>
+      <NavbarMenuCategory categoriesLoading={categoriesLoading}>
         {categories.map((e) => (
-          <NavbarItem
-            key={e.category}
-            content={e.category}
-            href={e.link}
-            w="w-full"
-          />
+          <NavbarItem key={e.category} content={e.category} href={e.link} w="w-full" />
         ))}
-      </NavbarCategoryMenu>
+      </NavbarMenuCategory>
 
-      
-      <NavbarItem content="Mis Ordenes" href="/cart" w="w-1/5" />
-      <NavbarItem content="Mis Compras" href="/cart" w="w-1/5" />
+      <NavbarItem
+        content="Mis Compras"
+        href="/cart"
+        w="m-1/5 ml-[18%] mr-2 text-zinc-100"
+      />
       <CartWidget />
-
     </nav>
   );
 }

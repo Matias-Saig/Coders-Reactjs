@@ -8,6 +8,7 @@ import { CartProvider } from "./context/CartContext.jsx";
 import RouteNotFound from "./components/NotFound/RouteNotFound.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Checkout from "./components/Checkout/Checkout.jsx";
+import OrdersFinder from "./components/OrdersFinder/OrdersFinder.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/item/:itemId" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<CartView />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<OrdersFinder />} />
             <Route path="/not-found" element={<RouteNotFound />} />
             <Route path="*" element={<Navigate to={"/not-found"} />} />
           </Routes>

@@ -48,15 +48,10 @@ export const CartProvider = ({ children }) => {
   // Busqueda y filtrado del item actual en cart
   const isInCart = (id) => cart.filter((item) => item.id === id)
 
-  const clearCart = () => {
-    setCart([]);
-  };
 
   // Calcular cantidad total
   const totalQuantity = (elem) => elem.reduce((acc, item) => acc + item.quantity, 0)
-
   const totalQuantityInCart = totalQuantity(cart);
-
   const totalCartPrice = cart.reduce((acc, item) => acc + item.totalPrice, 0)
 
   // Control de stock: reducción de option y quantity por Id
@@ -64,6 +59,10 @@ export const CartProvider = ({ children }) => {
     acc[item.id] = (acc[item.id] || 0) + item.quantity;
     return acc;
   }, {});
+
+  const clearCart = () => {
+    setCart([]);
+  };
 
   return (
     <CartContext.Provider

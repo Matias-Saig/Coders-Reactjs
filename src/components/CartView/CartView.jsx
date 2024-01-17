@@ -1,27 +1,27 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import useIsError from "../../Hooks/useIsError";
+import useIsCartEmpty from "../../Hooks/useIsCartEmpty";
 import EmptyCart from "./EmptyCart";
 
 function CartView() {
   const { cart, removeItem } = useContext(CartContext);
 
   // Control de carrito vacio
-  const { isError } = useIsError({ cart });
+  const { isCartEmpty } = useIsCartEmpty({ cart });
 
   return (
     <>
-      {isError && <EmptyCart />}
+      {isCartEmpty && <EmptyCart />}
 
-      <article className="flex flex-col w-full justify-center items-center">
-        <Link
+      <Link
           to="/checkout"
-          className="fixed left-[35%] bottom-7 uppercase w-1/3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50 font-extrabold text-lg text-center shadow-md shadow-slate-500 tracking-wider"
+          className="z-20 fixed left-[35%] bottom-7 uppercase w-1/3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50 font-extrabold text-lg text-center shadow-lg shadow-slate-500 tracking-wider"
         >
           Finalizar compra
         </Link>
-
+        
+      <article className="flex flex-col w-full justify-center items-center">
         <ul className="flex flex-wrap w-2/3 gap-x-8 gap-y-8">
           <h2 className="text-4xl w-full uppercase tracking-widest font-bold font-serif text-teal-700 self-end">
             Lista de compras

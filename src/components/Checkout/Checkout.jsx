@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
-import useIsError from "../../Hooks/useIsError";
+import useIsCartEmpty from "../../Hooks/useIsCartEmpty";
 import EmptyCart from "../CartView/EmptyCart";
 
 function Checkout() {
@@ -13,16 +13,17 @@ function Checkout() {
     id: e.id,
     option: e.option,
     price: e.price,
+    totalPrice: e.totalPrice,
     quantity: e.quantity,
     title: e.title,
   }));
 
   // Control de carrito vacio
-  const {isError} = useIsError({cart})
+  const {isCartEmpty} = useIsCartEmpty({cart})
 
   return (
     <>
-      { isError && 
+      { isCartEmpty && 
         <EmptyCart /> 
       }
       <article className="w-full flex justify-center gap-10">

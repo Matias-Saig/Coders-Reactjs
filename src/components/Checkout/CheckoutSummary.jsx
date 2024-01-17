@@ -1,6 +1,16 @@
+import { useContext } from "react";
+import useIsCartEmpty from "../../Hooks/useIsCartEmpty";
+import { CartContext } from "../../context/CartContext";
+
 function CheckoutSummary({ summary, totalCartPrice }) {
+  const { cart} = useContext(CartContext);
+  const {isCartEmpty} = useIsCartEmpty({cart, dep:cart})
+
   return (
+
     <div className="flex flex-col w-5/12 p-5 shadow-lg bg-[rgba(255,255,255,.9)] rounded-md">
+    { !isCartEmpty ?
+    (<>
       <h4 className="text-teal-700 font-bold uppercase text-2xl text-center mb-5 mt-1">
         Resumen de compra
       </h4>
@@ -23,6 +33,10 @@ function CheckoutSummary({ summary, totalCartPrice }) {
         Total
         <br /> ${totalCartPrice}
       </h5>
+        </>) : (<h4 className="text-teal-700 font-bold uppercase text-2xl text-center mb-5 mt-1">
+        Su pedido fue realizado con éxito
+      </h4>)
+        }
     </div>
   );
 }
