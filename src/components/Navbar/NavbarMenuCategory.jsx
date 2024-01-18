@@ -18,7 +18,7 @@ const NavbarMenuCategory = ({ children, categoriesLoading }) => {
         onClick={toggleMenu}
       >
         <img
-          src="/public/img/Navbar/menu-white.png"
+          src="/img/Navbar/menu-white.png"
           className="w-6 opacity-50"
         />
         <span>Categorias </span>

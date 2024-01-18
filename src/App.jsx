@@ -21,7 +21,7 @@ function App() {
           <Greeting
             greeting="Hola!!!"
             contentIndex="estos son nuestro productos"
-            url="/public/img/Greeting/greeting_Image.png"
+            url="/img/Greeting/greeting_Image.png"
             alt="Greeting"
           />
 

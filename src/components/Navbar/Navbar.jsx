@@ -26,7 +26,7 @@ function Navbar() {
       <NavbarItem
         content="Mis Compras"
         href="/cart"
-        w="m-1/5 ml-[18%] mr-2 text-zinc-100"
+        w="m-1/5 ml-20 mr-5 text-zinc-100"
       />
       <CartWidget />
     </nav>
