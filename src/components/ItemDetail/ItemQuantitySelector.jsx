@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import useQuantity from "../../Hooks/useQuantity";
 import { CartContext } from "../../context/CartContext";
+import toast, { Toaster } from "react-hot-toast";
 
 function ItemQuantitySelector({ item }) {
   const { addToCart, isInCart, totalQuantity } = useContext(CartContext);
@@ -40,8 +41,25 @@ function ItemQuantitySelector({ item }) {
     totalPrice,
   };
 
+  const notify = () => {
+    toast.success("Producto agregado");
+  };
+
   return (
     <>
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: "#363636",
+            color: "#fff",
+            padding: "1rem 3rem",
+            filter: "drop-shadow(0 5px 5px rgba(30,30,30,0.3))",
+            fontWeight: "bold",
+          },
+        }}
+      />
+
       <p className="text-center text-xl text-stone-800">
         ¿Como te gustaria? <br />
         Puedes elegir una variante
@@ -103,6 +121,7 @@ function ItemQuantitySelector({ item }) {
             selectedProduct.option
           );
           setQuantity(0);
+          notify();
         }}
         disabled={quantity == 0}
       >
@@ -115,11 +134,8 @@ function ItemQuantitySelector({ item }) {
         currentProductInCart.length !== 0 ? (
           <div>
             <p className="text-xl text-sky-800 text-center font-semibold">
-              {quantityInCart} productos en lista de compra 
-              <span className="ml-5 text-stone-500">
-              Stock: {item.stock} unidades
-              </span>
-              
+              {quantityInCart} productos en lista de compra
+              <span className="ml-5 text-stone-500">Stock: {item.stock} unidades</span>
             </p>
             <ul className="flex gap-5 justify-center">
               {currentProductInCart.map((e) => (

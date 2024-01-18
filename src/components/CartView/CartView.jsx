@@ -3,6 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import useIsCartEmpty from "../../Hooks/useIsCartEmpty";
 import EmptyCart from "./EmptyCart";
+import toast, { Toaster } from "react-hot-toast";
 
 function CartView() {
   const { cart, clearCart, removeItem } = useContext(CartContext);
@@ -10,8 +11,25 @@ function CartView() {
   // Control de carrito vacio
   const { isCartEmpty } = useIsCartEmpty({ cart });
 
+  const notify = () => {
+    toast.error("Productos eliminados");
+  };
+
   return (
     <>
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: "#363636",
+            color: "#fff",
+            padding: "1rem 3rem",
+            filter: "drop-shadow(0 5px 5px rgba(30,30,30,0.3))",
+            fontWeight: "bold",
+          },
+        }}
+      />
+
       {isCartEmpty && <EmptyCart />}
 
       <article className="flex flex-col w-full justify-center items-center pb-20">
@@ -58,10 +76,12 @@ function CartView() {
           ))}
         </ul>
 
-        <div className="z-20 flex  justify-evenly items-center bg-[rgba(230,255,230,0.7)] backdrop-blur-sm w-screen fixed bottom-0 py-2 border-t-2 border-white">
+        <div className="z-20 flex  justify-evenly items-center bg-[rgba(178,228,178,0.7)] backdrop-blur-sm w-screen fixed bottom-0 py-2 border-t-2 border-white">
           <button
             className="border-2 border-red-400 bg-red-300 hover:bg-red-800 font-bold text-zinc-50 w-1/6 py-3 uppercase rounded-lg"
-            onClick={() => clearCart()}
+            onClick={() => {
+              clearCart(), notify();
+            }}
           >
             <figure className=" flex justify-center items-center  gap-1">
               <img

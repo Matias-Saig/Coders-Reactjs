@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import CheckoutFormInput from "./CheckoutFormInput";
 import { CartContext } from "../../context/CartContext";
 import OrdersGen from "./OrdersGen";
+import toast, { Toaster } from "react-hot-toast";
 
 function CheckoutForm({ summary, totalCartPrice }) {
   const { clearCart } = useContext(CartContext);
@@ -32,8 +33,6 @@ function CheckoutForm({ summary, totalCartPrice }) {
     emailConfirm: "",
   });
 
-  const [check, setCheck] = useState(false);
-
   const handleInputChange = (e) => {
     setValues({
       ...values,
@@ -43,10 +42,9 @@ function CheckoutForm({ summary, totalCartPrice }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (values.email !== values.emailConfirm) {
-      setCheck(false);
+      notify()
       return;
     } else {
-      setCheck(true);
       setLoading(true);
 
       const order = {
@@ -65,83 +63,95 @@ function CheckoutForm({ summary, totalCartPrice }) {
     }
   };
 
+  const notify = () => {
+    toast.error("El email no coincide");
+  };
+
   return (
-    <div
-      className={`${
-        loading && "grayscale"
-      } flex flex-col w-5/12 p-5 shadow-lg bg-[rgba(255,255,255,.9)] rounded-md`}
-    >
-      {!genOrder ? (
-        <>
-          <h4 className="text-sky-700 font-bold uppercase text-2xl text-center mb-8 mt-1">
-            Finalizar compra
-          </h4>
+    <>
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: "#363636",
+            color: "#fff",
+            padding: "1rem 3rem",
+            filter: "drop-shadow(0 5px 5px rgba(30,30,30,0.3))",
+            fontWeight: "bold",
+          },
+        }}
+      />
+      <div
+        className={`${
+          loading && "grayscale"
+        } flex flex-col w-5/12 p-5 shadow-lg bg-[rgba(255,255,255,.9)] rounded-md`}
+      >
+        {!genOrder ? (
+          <>
+            <h4 className="text-sky-700 font-bold uppercase text-2xl text-center mb-8 mt-1">
+              Finalizar compra
+            </h4>
 
-          <form
-            className="flex flex-wrap gap-2 justify-center items-center"
-            onSubmit={handleSubmit}
-          >
-            <CheckoutFormInput
-              content="nombre"
-              type="text"
-              inputName="nombre"
-              placeholder="Jonh"
-              values={values.nombre}
-              fx={handleInputChange}
-            />
-            <CheckoutFormInput
-              content="apellido"
-              type="text"
-              inputName="apellido"
-              placeholder="Due"
-              values={values.apellido}
-              fx={handleInputChange}
-            />
-            <CheckoutFormInput
-              content="telefono"
-              type="tel"
-              inputName="telefono"
-              placeholder="123456789"
-              values={values.telefono}
-              fx={handleInputChange}
-            />
-            <CheckoutFormInput
-              content="email"
-              type="email"
-              inputName="email"
-              placeholder="nombre@email.com"
-              value={values.email}
-              fx={handleInputChange}
-            />
-            <CheckoutFormInput
-              content="Repite el email"
-              type="email"
-              inputName="emailConfirm"
-              placeholder="confirmar email"
-              value={values.emailConfirm}
-              fx={handleInputChange}
-            />
-
-            {!check && (
-              <p className="w-full text-center font-bold italic text-red-700 mt-5">
-                « El email no coincide »
-              </p>
-            )}
-
-            <button
-              type="submit"
-              className={` ${
-                loading && "animate-pulse grayscale-0"
-              } uppercase w-2/5 rounded-full py-2 mt-5 bg-sky-600 hover:bg-sky-900 text-stone-50 font-bold text-center shadow-md shadow-slate-400 tracking-wider`}
+            <form
+              className="flex flex-wrap gap-2 justify-center items-center"
+              onSubmit={handleSubmit}
             >
-              Comprar
-            </button>
-          </form>
-        </>
-      ) : (
-        <OrdersGen checkout={checkout} />
-      )}
-    </div>
+              <CheckoutFormInput
+                content="nombre"
+                type="text"
+                inputName="nombre"
+                placeholder="Jonh"
+                values={values.nombre}
+                fx={handleInputChange}
+              />
+              <CheckoutFormInput
+                content="apellido"
+                type="text"
+                inputName="apellido"
+                placeholder="Due"
+                values={values.apellido}
+                fx={handleInputChange}
+              />
+              <CheckoutFormInput
+                content="telefono"
+                type="tel"
+                inputName="telefono"
+                placeholder="123456789"
+                values={values.telefono}
+                fx={handleInputChange}
+              />
+              <CheckoutFormInput
+                content="email"
+                type="email"
+                inputName="email"
+                placeholder="nombre@email.com"
+                value={values.email}
+                fx={handleInputChange}
+              />
+              <CheckoutFormInput
+                content="Repite el email"
+                type="email"
+                inputName="emailConfirm"
+                placeholder="confirmar email"
+                value={values.emailConfirm}
+                fx={handleInputChange}
+              />
+
+              <button
+                type="submit"
+                className={` ${
+                  loading && "animate-pulse grayscale-0"
+                } uppercase w-2/5 rounded-full py-2 mt-5 bg-sky-600 hover:bg-sky-900 text-stone-50 font-bold text-center shadow-md shadow-slate-400 tracking-wider`}
+              >
+                Comprar
+              </button>
+            </form>
+          </>
+        ) : (
+          <OrdersGen checkout={checkout} />
+        )}
+      </div>
+    </>
   );
 }
 
