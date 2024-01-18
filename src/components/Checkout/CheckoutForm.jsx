@@ -29,7 +29,10 @@ function CheckoutForm({ summary, totalCartPrice }) {
     apellido: "",
     telefono: "",
     email: "",
+    emailConfirm: "",
   });
+
+  const [check, setCheck] = useState(false);
 
   const handleInputChange = (e) => {
     setValues({
@@ -37,24 +40,29 @@ function CheckoutForm({ summary, totalCartPrice }) {
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSubmit = (e) => {
-    setLoading(true);
     e.preventDefault();
+    if (values.email !== values.emailConfirm) {
+      setCheck(false);
+      return;
+    } else {
+      setCheck(true);
+      setLoading(true);
 
-    const order = {
-      cliente: values,
-      checkout,
-    };
+      const order = {
+        cliente: values,
+        checkout,
+      };
 
-    const ordersRef = collection(db, "orders");
+      const ordersRef = collection(db, "orders");
 
-    addDoc(ordersRef, order).then((doc) => {
-      setOrderId(doc.id);
-      setLoading(false);
-      clearCart();
-      SetGenOrder(true);
-    });
+      addDoc(ordersRef, order).then((doc) => {
+        setOrderId(doc.id);
+        setLoading(false);
+        clearCart();
+        SetGenOrder(true);
+      });
+    }
   };
 
   return (
@@ -76,40 +84,55 @@ function CheckoutForm({ summary, totalCartPrice }) {
             <CheckoutFormInput
               content="nombre"
               type="text"
+              inputName="nombre"
               placeholder="Jonh"
               values={values.nombre}
               fx={handleInputChange}
             />
-
             <CheckoutFormInput
               content="apellido"
               type="text"
+              inputName="apellido"
               placeholder="Due"
               values={values.apellido}
               fx={handleInputChange}
             />
-
             <CheckoutFormInput
               content="telefono"
               type="tel"
+              inputName="telefono"
               placeholder="123456789"
               values={values.telefono}
               fx={handleInputChange}
             />
-
             <CheckoutFormInput
               content="email"
               type="email"
+              inputName="email"
               placeholder="nombre@email.com"
-              values={values.email}
+              value={values.email}
               fx={handleInputChange}
             />
+            <CheckoutFormInput
+              content="Repite el email"
+              type="email"
+              inputName="emailConfirm"
+              placeholder="confirmar email"
+              value={values.emailConfirm}
+              fx={handleInputChange}
+            />
+
+            {!check && (
+              <p className="w-full text-center font-bold italic text-red-700 mt-5">
+                « El email no coincide »
+              </p>
+            )}
 
             <button
               type="submit"
               className={` ${
                 loading && "animate-pulse grayscale-0"
-              } uppercase w-2/5 rounded-full py-2 mt-10 bg-sky-600 hover:bg-sky-900 text-stone-50 font-bold text-center shadow-md shadow-slate-400 tracking-wider`}
+              } uppercase w-2/5 rounded-full py-2 mt-5 bg-sky-600 hover:bg-sky-900 text-stone-50 font-bold text-center shadow-md shadow-slate-400 tracking-wider`}
             >
               Comprar
             </button>

@@ -19,13 +19,11 @@ function Checkout() {
   }));
 
   // Control de carrito vacio
-  const {isCartEmpty} = useIsCartEmpty({cart})
+  const { isCartEmpty } = useIsCartEmpty({ cart });
 
   return (
     <>
-      { isCartEmpty && 
-        <EmptyCart /> 
-      }
+      {isCartEmpty && <EmptyCart />}
       <article className="w-full flex justify-center gap-10">
         <CheckoutSummary summary={summary} totalCartPrice={totalCartPrice} />
         <CheckoutForm summary={summary} totalCartPrice={totalCartPrice} />
