@@ -11,13 +11,14 @@ function NavigateGoBack({ classAdd }) {
 
   return (
     <>
-      {local !== "/" &&
+      {local !== "/" && (
         <button
           onClick={handleGoBack}
           className={`self-start uppercase text-zinc-50 font-extrabold bg-teal-500 rounded-full py-1 px-4 shadow-md ${classAdd}`}
         >
           &lt; volver
-        </button>}
+        </button>
+      )}
     </>
   );
 }

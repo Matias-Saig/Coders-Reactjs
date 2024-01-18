@@ -5,6 +5,8 @@ import CheckoutFormInput from "./CheckoutFormInput";
 import { CartContext } from "../../context/CartContext";
 import OrdersGen from "./OrdersGen";
 import toast, { Toaster } from "react-hot-toast";
+import { Toast } from "../Toast/Toast";
+import { notifyError } from "../Toast/Notify";
 
 function CheckoutForm({ summary, totalCartPrice }) {
   const { clearCart } = useContext(CartContext);
@@ -33,16 +35,18 @@ function CheckoutForm({ summary, totalCartPrice }) {
     emailConfirm: "",
   });
 
+  // input fx
   const handleInputChange = (e) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (values.email !== values.emailConfirm) {
-      notify()
+      notifyError("El email no coincide");
       return;
     } else {
       setLoading(true);
@@ -52,6 +56,7 @@ function CheckoutForm({ summary, totalCartPrice }) {
         checkout,
       };
 
+      // agregado de orden a Firebase
       const ordersRef = collection(db, "orders");
 
       addDoc(ordersRef, order).then((doc) => {
@@ -63,24 +68,10 @@ function CheckoutForm({ summary, totalCartPrice }) {
     }
   };
 
-  const notify = () => {
-    toast.error("El email no coincide");
-  };
-
   return (
     <>
-      <Toaster
-        position="bottom-center"
-        toastOptions={{
-          style: {
-            background: "#363636",
-            color: "#fff",
-            padding: "1rem 3rem",
-            filter: "drop-shadow(0 5px 5px rgba(30,30,30,0.3))",
-            fontWeight: "bold",
-          },
-        }}
-      />
+      <Toast />
+
       <div
         className={`${
           loading && "grayscale"

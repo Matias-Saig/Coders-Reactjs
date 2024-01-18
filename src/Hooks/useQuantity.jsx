@@ -5,7 +5,7 @@ function useQuantity({ stock, price, quantityInCart }) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleAdd = () => {
-    (quantity < (stock - quantityInCart)) && setQuantity(quantity + 1);
+    quantity < stock - quantityInCart && setQuantity(quantity + 1);
   };
 
   const handleSubtract = () => {
@@ -16,7 +16,7 @@ function useQuantity({ stock, price, quantityInCart }) {
     setTotalPrice(quantity * price);
   }, [quantity, price]);
 
-  return { totalPrice, quantity, setQuantity,handleAdd, handleSubtract };
+  return { totalPrice, quantity, setQuantity, handleAdd, handleSubtract };
 }
 
 export default useQuantity;

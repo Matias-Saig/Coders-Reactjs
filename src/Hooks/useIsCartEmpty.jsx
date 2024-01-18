@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
-
-function useIsCartEmpty( {cart, dep}) {
-    
-    const [isCartEmpty, setIsCartEmpty] = useState(false);
+function useIsCartEmpty({ cart, dep }) {
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
 
   useEffect(() => {
     if (cart.length === 0) {
@@ -11,7 +9,7 @@ function useIsCartEmpty( {cart, dep}) {
     }
   }, [dep]);
 
-  return {isCartEmpty}
+  return { isCartEmpty };
 }
 
 export default useIsCartEmpty;

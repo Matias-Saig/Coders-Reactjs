@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import useQuantity from "../../Hooks/useQuantity";
 import { CartContext } from "../../context/CartContext";
-import toast, { Toaster } from "react-hot-toast";
+import { Toast } from "../Toast/Toast";
+import { notifySuccess } from "../Toast/Notify";
 
 function ItemQuantitySelector({ item }) {
   const { addToCart, isInCart, totalQuantity } = useContext(CartContext);
@@ -11,14 +12,16 @@ function ItemQuantitySelector({ item }) {
   const quantityInCart = totalQuantity(currentProductInCart);
 
   // operadores
-  const { totalPrice, quantity, setQuantity, handleAdd, handleSubtract } = useQuantity({
-    stock: item.stock,
-    price: item.price,
-    quantityInCart: quantityInCart,
-  });
+  const { totalPrice, quantity, setQuantity, handleAdd, handleSubtract } =
+    useQuantity({
+      stock: item.stock,
+      price: item.price,
+      quantityInCart: quantityInCart,
+    });
 
   // cambios de estilo
-  const styleActive = "text-white bg-sky-700 rounded-full w-10 pt-1 hover:bg-sky-400";
+  const styleActive =
+    "text-white bg-sky-700 rounded-full w-10 pt-1 hover:bg-sky-400";
   const styleDisabled = "text-stone-400";
   const styleDisabledAdd =
     quantity == item.stock - quantityInCart ? styleDisabled : styleActive;
@@ -41,24 +44,20 @@ function ItemQuantitySelector({ item }) {
     totalPrice,
   };
 
-  const notify = () => {
-    toast.success("Producto agregado");
-  };
+  const buyProducts = () => {
+    addToCart(
+      selectedProduct,
+      selectedProduct.id,
+      selectedProduct.quantity,
+      selectedProduct.option
+    );
+    setQuantity(0);
+    notifySuccess("Producto agregado");
+  }
 
   return (
     <>
-      <Toaster
-        position="bottom-center"
-        toastOptions={{
-          style: {
-            background: "#363636",
-            color: "#fff",
-            padding: "1rem 3rem",
-            filter: "drop-shadow(0 5px 5px rgba(30,30,30,0.3))",
-            fontWeight: "bold",
-          },
-        }}
-      />
+      <Toast />
 
       <p className="text-center text-xl text-stone-800">
         ¿Como te gustaria? <br />
@@ -94,11 +93,18 @@ function ItemQuantitySelector({ item }) {
           {quantity}
         </span>
 
-        <button className={`font-extrabold ${styleDisabledAdd}`} onClick={handleAdd}>
+        <button
+          className={`font-extrabold ${styleDisabledAdd}`}
+          onClick={handleAdd}
+        >
           ↑
         </button>
       </div>
-      <p className={`text-2xl ${quantity == 0 ? "text-stone-400" : "text-sky-700"}`}>
+      <p
+        className={`text-2xl ${
+          quantity == 0 ? "text-stone-400" : "text-sky-700"
+        }`}
+      >
         Total: ${totalPrice}
       </p>
 
@@ -114,14 +120,7 @@ function ItemQuantitySelector({ item }) {
       } transition-all
       `}
         onClick={() => {
-          addToCart(
-            selectedProduct,
-            selectedProduct.id,
-            selectedProduct.quantity,
-            selectedProduct.option
-          );
-          setQuantity(0);
-          notify();
+         buyProducts()
         }}
         disabled={quantity == 0}
       >
@@ -135,7 +134,9 @@ function ItemQuantitySelector({ item }) {
           <div>
             <p className="text-xl text-sky-800 text-center font-semibold">
               {quantityInCart} productos en lista de compra
-              <span className="ml-5 text-stone-500">Stock: {item.stock} unidades</span>
+              <span className="ml-5 text-stone-500">
+                Stock: {item.stock} unidades
+              </span>
             </p>
             <ul className="flex gap-5 justify-center">
               {currentProductInCart.map((e) => (

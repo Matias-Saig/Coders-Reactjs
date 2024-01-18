@@ -14,8 +14,9 @@ function Greeting({ greeting, contentIndex, url, alt }) {
             <span className="text-4xl">{contentIndex}</span>
           </h2>
         </div>
-      ) : <div className="h-10" />
-    }
+      ) : (
+        <div className="h-10" />
+      )}
     </>
   );
 }

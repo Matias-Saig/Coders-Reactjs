@@ -14,7 +14,12 @@ function Navbar() {
 
       <NavbarMenuCategory categoriesLoading={categoriesLoading}>
         {categories.map((e) => (
-          <NavbarItem key={e.category} content={e.category} href={e.link} w="w-full" />
+          <NavbarItem
+            key={e.category}
+            content={e.category}
+            href={e.link}
+            w="w-full"
+          />
         ))}
       </NavbarMenuCategory>
 

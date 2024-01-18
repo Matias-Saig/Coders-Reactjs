@@ -11,9 +11,7 @@ function Logo() {
 
         <h1 className="font-sans uppercase font-bold text-stone-100 text-center text-4xl tracking-wider">
           Menta peperina
-          <span className="block text-3xl text-stone-400 opacity-50">
-            Vivero urbano
-          </span>
+          <span className="block text-3xl text-stone-400 opacity-50">Vivero urbano</span>
         </h1>
 
         <img src="../../../../public/img/Logo/logo-dre.png" alt="logo-dre" />

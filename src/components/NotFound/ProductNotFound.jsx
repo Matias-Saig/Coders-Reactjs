@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 function ProductNotFound() {
   return (
     <>
-
-    <img src="/public/img/Error/404.webp" className="hue-rotate-180 opacity-80 w-1/3 rounded-3xl" alt="not product" />
+      <img
+        src="/public/img/Error/404.webp"
+        className="hue-rotate-180 opacity-80 w-1/3 rounded-3xl"
+        alt="not product"
+      />
       <p className="text-3xl my-5 text-stone-600">
         Lo sentimos, esto no es parte de nuestros productos
       </p>

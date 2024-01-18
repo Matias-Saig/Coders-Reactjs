@@ -20,9 +20,13 @@ function OrderFoundSummary({ item }) {
           </li>
         ))}
       </ul>
-      <h5 className="uppercase text-lg text-stone-700 font-bold">Total de la compra</h5>
+      <h5 className="uppercase text-lg text-stone-700 font-bold">
+        Total de la compra
+      </h5>
 
-      <p className="text-stone-600 text-lg font-bold">${item.checkout.totalCart}</p>
+      <p className="text-stone-600 text-lg font-bold">
+        ${item.checkout.totalCart}
+      </p>
       <p className="text-stone-500 text-right mt-3">
         Orden {item.checkout.orderState} el {item.checkout.date}
       </p>
