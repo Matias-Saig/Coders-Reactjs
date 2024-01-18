@@ -5,7 +5,7 @@ import useIsCartEmpty from "../../Hooks/useIsCartEmpty";
 import EmptyCart from "./EmptyCart";
 
 function CartView() {
-  const { cart, removeItem } = useContext(CartContext);
+  const { cart, clearCart, removeItem } = useContext(CartContext);
 
   // Control de carrito vacio
   const { isCartEmpty } = useIsCartEmpty({ cart });
@@ -15,13 +15,13 @@ function CartView() {
       {isCartEmpty && <EmptyCart />}
 
       <Link
-          to="/checkout"
-          className="z-20 fixed left-[35%] bottom-7 uppercase w-1/3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50 font-extrabold text-lg text-center shadow-lg shadow-slate-500 tracking-wider"
-        >
-          Finalizar compra
-        </Link>
-        
-      <article className="flex flex-col w-full justify-center items-center">
+        to="/checkout"
+        className="z-20 fixed left-[35%] bottom-7 uppercase w-1/3 rounded-full py-3 bg-sky-600 hover:bg-sky-900 text-stone-50 font-extrabold text-lg text-center shadow-lg shadow-slate-500 tracking-wider"
+      >
+        Finalizar compra
+      </Link>
+
+      <article className="flex flex-col w-full justify-center items-center pb-20">
         <ul className="flex flex-wrap w-2/3 gap-x-8 gap-y-8">
           <h2 className="text-4xl w-full uppercase tracking-widest font-bold font-serif text-teal-700 self-end">
             Lista de compras
@@ -64,6 +64,20 @@ function CartView() {
             </li>
           ))}
         </ul>
+
+        <button
+          className="bg-red-300 hover:bg-red-800 font-bold text-zinc-50 w-1/6 fixed bottom-7 right-6 py-3 uppercase rounded-lg "
+          onClick={() => clearCart()}
+        >
+          <figure className=" flex justify-center items-center  gap-1">
+            <img
+              className="w-[24px] opacity-80"
+              src="/public/img/Widgets/trash2-white.png"
+              alt="trash"
+            />
+            <span>Eliminar todo</span>
+          </figure>
+        </button>
       </article>
     </>
   );
