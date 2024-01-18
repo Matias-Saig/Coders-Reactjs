@@ -55,7 +55,7 @@ function CartView() {
                   <figure className=" flex justify-center items-center  gap-1">
                     <img
                       className="w-[24px] opacity-80"
-                      src="/public/img/Widgets/trash2-white.png"
+                      src="/img/Widgets/trash2-white.png"
                       alt="trash"
                     />
                     <span>Eliminar</span>
