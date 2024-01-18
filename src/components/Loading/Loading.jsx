@@ -3,7 +3,7 @@ function Loading() {
     <>
       <div className="container flex justify-center items-center border-solid border-y-2 border-stone-200  py-2">
         <img
-          src="../../../public/img/Loading/loading.png"
+          src="/public/img/Loading/loading.png"
           alt="loading"
           className="animate-bounce h-14"
         />

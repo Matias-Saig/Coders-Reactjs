@@ -10,7 +10,7 @@ function RouteNotFound() {
         Volver al inicio
       </Link>
       <img
-        src="../../../public/img/Error/404.webp"
+        src="/public/img/Error/404.webp"
         className="opacity-90"
         alt="error 404"
       />

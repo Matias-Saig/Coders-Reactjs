@@ -18,7 +18,7 @@ function CartWidget() {
       >
         <img
           className="h-6"
-          src="../../../public/img/Widgets/bag.png"
+          src="/public/img/Widgets/bag.png"
           alt="Shopping Bag"
         ></img>
         <p className="mt-1"> {totalQuantityInCart} </p>
