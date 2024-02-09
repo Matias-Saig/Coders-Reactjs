@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Header from "./components/Header/Header";
+import Header from "./components/Header/Header.jsx";
 import Greeting from "./components/Greeting/Greeting.jsx";
-import ItemListContainer from "./components/ItemList/ItemListContainer";
+import ItemListContainer from "./components/ItemList/ItemListContainer.jsx";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer.jsx";
 import CartView from "./components/CartView/CartView.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
