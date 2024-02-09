@@ -4,7 +4,7 @@ function ProductNotFound() {
   return (
     <>
       <img
-        src="/public/img/Error/404.webp"
+        src="/img/Error/404.webp"
         className="hue-rotate-180 opacity-80 w-1/3 rounded-3xl"
         alt="not product"
       />
