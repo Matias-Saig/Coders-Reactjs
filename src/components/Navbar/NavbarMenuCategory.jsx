@@ -33,7 +33,7 @@ const NavbarMenuCategory = ({ children, categoriesLoading }) => {
           <button onClick={toggleMenu} className="w-36 ml-3">
             {" "}
             <img
-              src="/public/img/Navbar/close-1.png"
+              src="/img/Navbar/close-1.png"
               className="w-6 opacity-70 hover:opacity-100"
               alt="close"
             />
